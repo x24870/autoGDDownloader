@@ -42,7 +42,7 @@ def download():
         creds = tools.run_flow(flow, store)
     drive_service = build('drive', 'v3', http=creds.authorize(Http()))
 
-    file_id = '0B3Y1tx84rF9sQ2JZTWMzNUllUWM'
+    file_id = '1pYjpFYG0eWT9gFNutblWpbaoYWELP8zh'
     #file_id = '0BwwA4oUTeiV1UVNwOHItT0xfa2M'
     request = drive_service.files().get_media(fileId=file_id)
     fh = io.BytesIO()
@@ -51,6 +51,9 @@ def download():
     while done is False:
         status, done = downloader.next_chunk()
         print("Download %d%%." % int(status.progress() * 100))
+
+    with open('test2.mp4', 'wb') as f:
+        f.write(fh.getvalue())
 
 if __name__ == '__main__':
     #main()
