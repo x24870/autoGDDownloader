@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 "oauth2client" = "*"
+google-api-python-client = "*"
 
 [dev-packages]
 
