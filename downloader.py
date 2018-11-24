@@ -37,7 +37,19 @@ class downloader():
 
         return
 
+    def searchPrefix(self, name):
+        query = "name contains '{}'".format(name)
+        resp = self.service.files().list(q=query).execute()
+        for i in resp.get('files', []):
+            print(i)
+
+    def getMetadata(self, id):
+        resp = self.service.files().get(fileId=id).execute()
+        print(resp.get('name'))
+
 if __name__ == '__main__':
     dldr = downloader()
-    dldr.download('0B3Y1tx84rF9sd0QtT0NuTGJkT0U')
+    #dldr.download('0B3Y1tx84rF9sd0QtT0NuTGJkT0U')
+    #dldr.searchPrefix('')
+    dldr.getMetadata('1AdsGVVHdFfmFl3_vd4HVBN_coHZ1RFSg')
     
