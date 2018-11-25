@@ -9,7 +9,7 @@ from googleapiclient.http import MediaIoBaseDownload
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/drive'
 
-class downloader():
+class GDdownloader():
     def __init__(self):
         self.service = self.build_service()
 
@@ -23,12 +23,12 @@ class downloader():
 
         return drive_service
 
-    def download(self, file_id):
+    def download(self, file_id, file_name):
         request = self.service.files().get_media(fileId=file_id)
         #fh = io.BytesIO()
         #TODO get file name and type from metadata
-        fh = io.FileIO('test3.jpg', 'wb')
-        downloader = MediaIoBaseDownload(fh, request)
+        fh = io.FileIO(file_name, 'wb')
+        downloader = MediaIoBaseDownload(fh, request, chunksize=1024*1024)
 
         done = False
         while done is False:
@@ -46,10 +46,13 @@ class downloader():
     def getMetadata(self, id):
         resp = self.service.files().get(fileId=id).execute()
         print(resp.get('name'))
+        return resp.get('name')
 
 if __name__ == '__main__':
-    dldr = downloader()
-    #dldr.download('0B3Y1tx84rF9sd0QtT0NuTGJkT0U')
-    #dldr.searchPrefix('')
-    dldr.getMetadata('1AdsGVVHdFfmFl3_vd4HVBN_coHZ1RFSg')
+    dldr = GDdownloader()
+    two_scoop_id = '1iSj4jp5wIvgBV0Pp6faGZyAdc4nf4aOW'
+    filename = dldr.getMetadata(porn_id)
+    dldr.download(porn_id, filename)
+
+
     

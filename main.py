@@ -1,10 +1,8 @@
-import subprocess
 import downloader
 
+
+file_id = '1iSj4jp5wIvgBV0Pp6faGZyAdc4nf4aOW'
+
 dldr = downloader.downloader()
-
-p = subprocess.Popen('ls', shell=True)
-rc = p.wait()
-print(rc)
-
-subprocess.run(['ls'])
+filename = dldr.getMetadata(file_id)
+dldr.download(file_id, filename)
