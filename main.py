@@ -1,8 +1,14 @@
-import downloader
+import GDdownloader
+import mylog
+
+def test():
+    test_jpg = '0B3Y1tx84rF9sTHhGOWdoNEh2Nms'
+
+    dldr = GDdownloader.GDdownloader()
+    filename = dldr.getMetadata(test_jpg)
+    dldr.download(test_jpg, filename)
 
 
-file_id = '1iSj4jp5wIvgBV0Pp6faGZyAdc4nf4aOW'
+test()
 
-dldr = downloader.downloader()
-filename = dldr.getMetadata(file_id)
-dldr.download(file_id, filename)
+mylog.filter_log()

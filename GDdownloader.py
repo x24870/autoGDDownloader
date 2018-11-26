@@ -6,6 +6,8 @@ from oauth2client import file, client, tools
 import io
 from googleapiclient.http import MediaIoBaseDownload
 
+from mylog import log
+
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/drive'
 
@@ -23,10 +25,10 @@ class GDdownloader():
 
         return drive_service
 
+    @log
     def download(self, file_id, file_name):
         request = self.service.files().get_media(fileId=file_id)
         #fh = io.BytesIO()
-        #TODO get file name and type from metadata
         fh = io.FileIO(file_name, 'wb')
         downloader = MediaIoBaseDownload(fh, request, chunksize=1024*1024)
 
