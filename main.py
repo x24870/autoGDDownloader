@@ -1,3 +1,4 @@
+import os
 import GDdownloader
 import mylog
 
@@ -9,6 +10,6 @@ def test():
     dldr.download(test_jpg, filename)
 
 
+mylog.clear_log()
 test()
-
 mylog.filter_log()
