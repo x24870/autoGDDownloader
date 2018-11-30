@@ -8,6 +8,8 @@ from googleapiclient.http import MediaIoBaseDownload
 
 from mylog import log2file
 
+#TODO: If the file exceed limit, create a copy in my google drive
+
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/drive'
 
