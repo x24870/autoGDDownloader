@@ -55,8 +55,8 @@ class GDdownloader():
 if __name__ == '__main__':
     dldr = GDdownloader()
     two_scoop_id = '1iSj4jp5wIvgBV0Pp6faGZyAdc4nf4aOW'
-    filename = dldr.getMetadata(porn_id)
-    dldr.download(porn_id, filename)
+    filename = dldr.getMetadata(two_scoop_id)
+    dldr.download(two_scoop_id, filename)
 
 
     
